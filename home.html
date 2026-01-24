@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Condomínio Figueiras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-content">
+    <h1 class="title">Condomínio Figueiras</h1>
+    <p class="welcome">Bem-vindo 👋</p>
+  </div>
+</header>
+
+<section class="home">
+  <div class="menu-list">
+
+    <div class="menu-item" onclick="abrirContato('Síndico')">
+      Fale com o Síndico
+    </div>
+
+    <div class="menu-item" onclick="abrirContato('Porteiro')">
+      Fale com o Porteiro
+    </div>
+
+    <div class="menu-item" onclick="abrirContato('Administradora')">
+      Fale com a Administradora
+    </div>
+
+    <div class="menu-item" onclick="abrirContato('Zelador')">
+      Fale com o Zelador
+    </div>
+
+    <div class="menu-item" onclick="window.location.href='reservas.html'">
+      Reservas
+    </div>
+
+  </div>
+</section>
+
+<script>
+  function abrirContato(tipo) {
+    window.location.href = "contato.html?para=" + encodeURIComponent(tipo);
+  }
+</script>
+
+</body>
+</html>
+
+

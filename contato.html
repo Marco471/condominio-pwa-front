@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova mensagem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .btn-anexo {
+      background: #fff;
+      color: #2d6cdf;
+      border: 2px dashed #2d6cdf;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-enviar {
+      background: #2d6cdf;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 10;
+    }
+
+    .sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #111;
+      border-radius: 18px 18px 0 0;
+      padding: 20px;
+      display: none;
+      z-index: 11;
+    }
+
+    .sheet-options {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .sheet-item {
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .sheet-item div {
+      width: 64px;
+      height: 64px;
+      background: #222;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      font-size: 26px;
+    }
+
+    .sheet-item span {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-content">
+    <h1 class="title">Nova mensagem</h1>
+    <p class="welcome">---</p>
+  </div>
+</header>
+
+<section class="home">
+  <div class="card">
+
+    <label>Assunto</label>
+    <input type="text" placeholder="Digite o assunto da mensagem">
+
+    <label>Conteúdo</label>
+    <textarea placeholder="Digite o conteúdo da mensagem"></textarea>
+
+    <button type="button" class="btn-anexo" onclick="abrirAnexo()">
+      📎 Anexar arquivo
+    </button>
+
+    <button class="btn-enviar" onclick="alert('Mensagem enviada!')">
+      Enviar mensagem
+    </button>
+
+  </div>
+
+  <button class="btn-voltar" onclick="history.back()">Voltar</button>
+</section>
+
+<!-- INPUTS -->
+<input type="file" id="camera" accept="image/*" capture="environment">
+<input type="file" id="galeria" accept="image/*">
+<input type="file" id="arquivo">
+
+<div class="overlay" onclick="fecharAnexo()"></div>
+
+<div class="sheet">
+  <div class="sheet-options">
+
+    <div class="sheet-item" onclick="document.getElementById('camera').click()">
+      <div>📷</div>
+      <span>Câmera</span>
+    </div>
+
+    <div class="sheet-item" onclick="document.getElementById('galeria').click()">
+      <div>🖼</div>
+      <span>Galeria</span>
+    </div>
+
+    <div class="sheet-item" onclick="document.getElementById('arquivo').click()">
+      <div>📁</div>
+      <span>Arquivos</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const destino = params.get("para") || "Síndico";
+  document.querySelector(".welcome").innerText = destino;
+
+  function abrirAnexo() {
+    document.querySelector(".overlay").style.display = "block";
+    document.querySelector(".sheet").style.display = "block";
+  }
+
+  function fecharAnexo() {
+    document.querySelector(".overlay").style.display = "none";
+    document.querySelector(".sheet").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
+

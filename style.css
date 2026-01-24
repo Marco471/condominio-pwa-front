@@ -1,0 +1,151 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f2f4f8;
+}
+
+/* ===== HEADER ===== */
+.top-bar {
+  background: #0f1e3d;
+  color: #fff;
+  padding: 16px 20px;
+}
+
+.top-content {
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.welcome {
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== CONTEÚDO ===== */
+.home {
+  padding: 12px 20px;
+}
+
+/* ===== LISTA DE CARDS (HOME) ===== */
+.menu-list {
+  max-width: 420px;
+  margin: 20px auto 0; /* 👈 AQUI está o ajuste */
+}
+
+.menu-item {
+  background: #fff;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.menu-item:hover {
+  background: #e9eef9;
+}
+
+/* ===== CARD PADRÃO ===== */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* ===== FORM ===== */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2d6cdf;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== LINKS (LOGIN) ===== */
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.links a {
+  font-size: 14px;
+  color: #2d6cdf;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* ===== BOTÃO VOLTAR PADRÃO ===== */
+.btn-voltar {
+  background: #555;
+  max-width: 420px;
+  margin: 16px auto 0;
+  display: block;
+}
+
+/* ===== BOTÃO VOLTAR PEQUENO ===== */
+.btn-voltar-pequeno {
+  width: auto;
+  padding: 10px 24px;
+  margin: 16px auto 0;
+  display: block;
+  background: #555;
+  font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

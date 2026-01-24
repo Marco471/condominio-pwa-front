@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Salão de Festas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .info {
+      margin-top: 12px;
+      font-size: 14px;
+      color: #d32f2f;
+      text-align: center;
+    }
+
+    .btn-voltar-pequeno {
+      width: auto;
+      padding: 10px 24px;
+      margin: 20px auto 0;
+      display: block;
+      background: #555;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-content">
+    <h1 class="title">Reservas</h1>
+    <p class="welcome">Salão de Festas</p>
+  </div>
+</header>
+
+<section class="home">
+  <div class="card">
+
+    <label>Nome do morador</label>
+    <input type="text" id="morador" placeholder="Digite seu nome">
+
+    <label>Número do apartamento</label>
+    <input type="text" id="apartamento" placeholder="Ex: 101">
+
+    <label>Data da reserva</label>
+    <input type="date" id="data">
+
+    <button onclick="agendar()">Agendar Salão</button>
+
+    <div id="info" class="info"></div>
+
+  </div>
+
+  <button class="btn-voltar-pequeno" onclick="voltar()">Voltar</button>
+</section>
+
+<script>
+  function agendar() {
+    const morador = document.getElementById("morador").value;
+    const apartamento = document.getElementById("apartamento").value;
+    const data = document.getElementById("data").value;
+    const info = document.getElementById("info");
+
+    if (!morador || !apartamento || !data) {
+      info.innerText = "Preencha todos os campos";
+      return;
+    }
+
+    const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+
+    if (reservas.includes(data)) {
+      info.innerText = "❌ Esta data já está reservada";
+      return;
+    }
+
+    reservas.push(data);
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+
+    alert(
+      "Reserva confirmada!\n\n" +
+      "Morador: " + morador + "\n" +
+      "Apartamento: " + apartamento + "\n" +
+      "Data: " + data
+    );
+
+    info.innerText = "";
+    document.getElementById("data").value = "";
+  }
+
+  function voltar() {
+    window.location.href = "home.html";
+  }
+</script>
+
+</body>
+</html>
+
+
+
+
