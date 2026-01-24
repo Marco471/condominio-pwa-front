@@ -172,6 +172,16 @@ body {
   text-align: center;
 }
 
+/* ===== CENTRALIZA LOGIN NO DESKTOP ===== */
+@media (min-width: 768px) {
+  .home {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 
 
 
