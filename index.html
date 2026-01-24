@@ -43,7 +43,8 @@
 </section>
 
 <script>
-  const API_URL = "http://192.168.0.7:8000";
+  // ✅ PARA DESENVOLVIMENTO LOCAL
+  const API_URL = "http://127.0.0.1:8000";
 
   async function entrar() {
     const email = document.getElementById("email").value;
@@ -67,10 +68,14 @@
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.detail);
+        alert(data.detail || "Erro no login");
         return;
       }
 
+      // ✅ SALVA TOKEN (ESSENCIAL)
+      localStorage.setItem("token", data.access_token);
+
+      // ✅ REDIRECIONA
       window.location.href = "home.html";
 
     } catch (error) {
@@ -101,7 +106,7 @@
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.detail);
+        alert(data.detail || "Erro no cadastro");
         return;
       }
 
