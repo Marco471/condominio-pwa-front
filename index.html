@@ -16,23 +16,19 @@
 </header>
 
 <section class="home">
-  <div class="card">
+  <div class="card login-card">
 
-    <label>Email</label>
-    <input
-      type="email"
-      id="email"
-      placeholder="email@exemplo.com"
-    >
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="email" placeholder="email@exemplo.com">
+    </div>
 
-    <label>Senha</label>
-    <input
-      type="password"
-      id="senha"
-      placeholder="********"
-    >
+    <div class="field">
+      <label>Senha</label>
+      <input type="password" id="senha" placeholder="••••••">
+    </div>
 
-    <button onclick="entrar()">Entrar</button>
+    <button class="primary-btn" onclick="entrar()">Entrar</button>
 
     <div class="links">
       <a onclick="cadastrar()">Cadastrar</a>
@@ -43,12 +39,15 @@
 </section>
 
 <script>
-  // ✅ PARA DESENVOLVIMENTO LOCAL
-  const API_URL = "http://127.0.0.1:8000";
+  // 👉 API funciona no PC (localhost) e no celular (IP da rede)
+  const API_URL =
+    location.hostname === "localhost" || location.hostname === "127.0.0.1"
+      ? "http://127.0.0.1:8000"
+      : "http://192.168.0.7:8000"; // ⚠️ confirme se este é seu IP
 
   async function entrar() {
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
 
     if (!email || !senha) {
       alert("Preencha email e senha");
@@ -59,10 +58,7 @@
       const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email,
-          password: senha
-        })
+        body: JSON.stringify({ email, password: senha })
       });
 
       const data = await response.json();
@@ -72,24 +68,20 @@
         return;
       }
 
-      // ✅ SALVA TOKEN (ESSENCIAL)
-      localStorage.setItem("token", data.access_token);
+      // 🔥 CORREÇÃO IMPORTANTE (funciona no celular e no PC)
+      window.location.href = location.origin + "/home.html";
 
-      // ✅ REDIRECIONA
-      window.location.href = "home.html";
-
-    } catch (error) {
+    } catch (e) {
       alert("Erro ao conectar com o servidor");
-      console.error(error);
     }
   }
 
   async function cadastrar() {
-    const email = document.getElementById("email").value;
-    const senha = document.getElementById("senha").value;
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value.trim();
 
     if (!email || !senha) {
-      alert("Preencha email e senha para cadastrar");
+      alert("Preencha email e senha");
       return;
     }
 
@@ -97,10 +89,7 @@
       const response = await fetch(`${API_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email,
-          password: senha
-        })
+        body: JSON.stringify({ email, password: senha })
       });
 
       const data = await response.json();
@@ -110,21 +99,21 @@
         return;
       }
 
-      alert("Cadastro realizado com sucesso! Agora faça login.");
-
-    } catch (error) {
+      alert("Cadastro realizado! Faça login.");
+    } catch (e) {
       alert("Erro ao conectar com o servidor");
-      console.error(error);
     }
   }
 
   function esqueciSenha() {
-    alert("Recuperação de senha será implementada futuramente.");
+    alert("Funcionalidade em breve");
   }
 </script>
 
 </body>
 </html>
+
+
 
 
 

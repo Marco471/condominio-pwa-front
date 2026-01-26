@@ -19,24 +19,29 @@
   <div class="card form-card">
 
     <label>Área comum</label>
-    <select>
+    <select id="area">
       <option>Salão de festas</option>
       <option>Churrasqueira</option>
       <option>Quadra</option>
     </select>
 
     <label>Data</label>
-    <input type="date">
+    <input type="date" id="dataReserva">
 
     <label>Horário</label>
-    <input type="time">
+    <input type="time" id="horario">
 
-    <button class="primary-btn">Solicitar reserva</button>
+    <button class="primary-btn" onclick="reservarSalao()">
+      Solicitar reserva
+    </button>
 
     <a href="home.html" class="secondary-btn">Voltar</a>
 
   </div>
 </section>
+
+<!-- 🔥 JS QUE FAZ FUNCIONAR -->
+<script src="app.js"></script>
 
 </body>
 </html>

@@ -1,48 +1,75 @@
-const API = "http://127.0.0.1:8000";
+const API =
+  location.hostname === "localhost" || location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8000"
+    : "http://192.168.0.7:8000";
 
-// REGISTRAR
-function register() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+// ================= MENSAGEM =================
+function enviarMensagem() {
+  const assunto = document.getElementById("assunto").value;
+  const conteudo = document.getElementById("conteudo").value;
+  const anexo = document.getElementById("anexo")?.files[0];
 
-  fetch(`${API}/register`, {
+  if (!assunto || !conteudo) {
+    alert("Preencha assunto e mensagem");
+    return;
+  }
+
+  fetch(`${API}/mensagens`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ email, password })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      nome: assunto,
+      email: "sistema@condominio",
+      conteudo: conteudo
+    })
   })
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("msg").innerText =
-      data.message || data.detail;
-  })
-  .catch(() => {
-    document.getElementById("msg").innerText =
-      "Erro ao conectar ao servidor";
-  });
+    .then(async res => {
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert("Erro ao enviar mensagem ❌");
+        return;
+      }
+
+      alert("Mensagem enviada com sucesso ✅");
+      document.getElementById("assunto").value = "";
+      document.getElementById("conteudo").value = "";
+      if (document.getElementById("anexo")) {
+        document.getElementById("anexo").value = "";
+      }
+    })
+    .catch(() => {
+      alert("Erro ao conectar com o servidor ❌");
+    });
 }
 
-// LOGIN
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+// ================= RESERVA =================
+function reservarSalao() {
+  const data = document.getElementById("dataReserva").value;
 
-  fetch(`${API}/login`, {
+  if (!data) {
+    alert("Escolha uma data");
+    return;
+  }
+
+  fetch(`${API}/reservar-salao`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ email, password })
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ data })
   })
-  .then(res => res.json())
-  .then(data => {
-    localStorage.setItem("token", data.access_token);
-    document.getElementById("msg").innerText =
-      "Login realizado com sucesso";
-  })
-  .catch(() => {
-    document.getElementById("msg").innerText =
-      "Erro ao conectar ao servidor";
-  });
+    .then(async res => {
+      const dataJson = await res.json();
+
+      if (!res.ok) {
+        alert("❌ Esta data já está ocupada");
+        return;
+      }
+
+      alert("Reserva realizada com sucesso ✅");
+      document.getElementById("dataReserva").value = "";
+    })
+    .catch(() => {
+      alert("Erro ao realizar reserva ❌");
+    });
 }
+
