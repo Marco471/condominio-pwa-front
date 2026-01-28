@@ -66,19 +66,20 @@ http://IP_DO_PC:5500
 Exemplo:
 http://192.168.0.7:5500
 ---
-## 📸 Telas do Sistema
+📸 Telas do Sistema
 
-### 🔐 Tela de Login
+🔐 Tela de Login  
 ![Tela de Login](login.png)
 
-### 🏠 Menu Principal
+🏠 Menu Principal  
 ![Menu Principal](home.png)
 
-### 💬 Envio de Mensagens ao Síndico
-![Mensagens](mensagens.png)
+💬 Envio de Mensagens ao Síndico  
+![Envio de Mensagens](nova-mensagem.png)
 
-### 📅 Reserva de Áreas Comuns
+📅 Reserva de Áreas Comuns  
 ![Reservas](reservas.png)
+
 
 ## Estrutura do Projeto
 condominio-pwa-front/
