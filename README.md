@@ -57,8 +57,7 @@ A aplicação estará disponível em:
 
 ```text
 http://localhost:5500
-
-
+```
 ### 3️⃣ Acesso pelo celular
 Com o backend rodando na mesma rede, acesse no navegador do celular:
 
@@ -66,9 +65,20 @@ http://IP_DO_PC:5500
 
 Exemplo:
 http://192.168.0.7:5500
-
-
 ---
+## 📸 Telas do Sistema
+
+### 🔐 Tela de Login
+![Tela de Login](login.png)
+
+### 🏠 Menu Principal
+![Menu Principal](home.png)
+
+### 💬 Envio de Mensagens ao Síndico
+![Mensagens](mensagens.png)
+
+### 📅 Reserva de Áreas Comuns
+![Reservas](reservas.png)
 
 ## Estrutura do Projeto
 condominio-pwa-front/
